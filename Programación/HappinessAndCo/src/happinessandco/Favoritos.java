@@ -12,4 +12,19 @@ public class Favoritos {
     
     private String correoUsuario;
     private String idEvento;
+
+    public String getCorreoUsuario() {
+        return correoUsuario;
+    }
+
+    public String getIdEvento() {
+        return idEvento;
+    }
+
+    @Override
+    public String toString() {
+        return "Favoritos{" + "correoUsuario=" + correoUsuario + ", idEvento=" + idEvento + '}';
+    }
+    
+    
 }

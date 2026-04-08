@@ -13,4 +13,33 @@ class Galeria {
     private String id;
     private String titulo;
     private String idEvento;
+
+    public Galeria(String id, String titulo, String idEvento) {
+        this.id = id;
+        this.titulo = titulo;
+        this.idEvento = idEvento;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getIdEvento() {
+        return idEvento;
+    }
+
+    @Override
+    public String toString() {
+        return "Galeria{" + "id=" + id + ", titulo=" + titulo + ", idEvento=" + idEvento + '}';
+    }
+    
+    
 }
