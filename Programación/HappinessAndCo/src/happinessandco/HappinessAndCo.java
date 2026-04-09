@@ -37,29 +37,44 @@ public class HappinessAndCo {
             }
             switch (opcion) {
                 case 1 -> {
-                    System.out.println("Opción 1:");
-                    //System.out.println("Tu saldo es: " + saldo);
+                    System.out.println("*Añadir usuario*");
                 }
                 case 2 -> {
-                    System.out.println("Opción 2:");
+                    System.out.println("*Eliminar usuario*");
                     System.out.println("¿Cuánto deseas depositar? ");
                     double deposito = sc.nextDouble();
                     if (deposito <= 0) { // No permite depósitos negativos
                         System.out.println("El monto debe ser mayor que 0");
                     } else {
-                        //saldo += deposito;
-                        //System.out.println("Depósito exitoso. Saldo actual: $" + saldo);
+                        
                     }
                 }
 
                 case 3 -> {
-                    System.out.println("Opción 3:");
+                    System.out.println("*Añadir evento*");
                     System.out.println("¿Cuánto deseas retirar? ");
                     double retiro = sc.nextDouble();
                     
                 }
-                case 4 ->
-                    System.out.println("¡Gracias por usar nuestro cajero!");
+                case 4 -> {
+                    System.out.println("*Eliminar evento*");
+                }
+                case 5 -> {
+                    System.out.println("*Añadir galería*");
+                }
+                case 6 -> {
+                    System.out.println("*Eliminar galería*");
+                }
+                case 7 -> {
+                    System.out.println("*Añadir favorito*");
+                }
+                case 8 -> {
+                    System.out.println("*Eliminar favorito*");
+                }
+                case 9 -> {
+                    System.out.println("*Gracias por usar nuestro sistema*");
+                }
+                
                 default ->
                     System.out.println("Opción inválida!");
 
