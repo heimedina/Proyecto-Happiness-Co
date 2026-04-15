@@ -12,7 +12,6 @@ public class HappinessAndCo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        boolean salir=false;
         int opcion;
         Scanner sc = new Scanner(System.in);
         do {
@@ -52,8 +51,6 @@ public class HappinessAndCo {
 
                 case 3 -> {
                     System.out.println("*Añadir evento*");
-                    System.out.println("¿Cuánto deseas retirar? ");
-                    double retiro = sc.nextDouble();
                     
                 }
                 case 4 -> {
