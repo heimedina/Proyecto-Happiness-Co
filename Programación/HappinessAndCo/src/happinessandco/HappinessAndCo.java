@@ -1,13 +1,11 @@
 package happinessandco;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -137,17 +135,20 @@ public class HappinessAndCo {
 
         // Definir el formato esperado
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        System.out.print("Introduce la Fecha *asegurate que sea en formato dd/MM/yyyy*: ");
-        // Fecha en formato String "16/01/2026"
-        String fechaTexto = sc.nextLine();
-        LocalDate fecha;
+        LocalDate fecha = null;
 
-        try {
-            // Convertir String a LocalDate
-            fecha = LocalDate.parse(fechaTexto, formato);
-            System.out.println("Fecha convertida: " + fecha);
-        } catch (DateTimeParseException e) {
-            System.out.println("Formato de fecha inválido: " + e.getMessage());
+        while (fecha == null) {
+            System.out.print("Introduce la Fecha *asegurate que sea en formato dd/MM/yyyy*: ");
+            // Fecha en formato String "16/01/2026"
+            String fechaTexto = sc.nextLine();
+
+            try {
+                // Convertir String a LocalDate
+                fecha = LocalDate.parse(fechaTexto, formato);
+                System.out.println("Fecha convertida: " + fecha);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato de fecha inválido, intenta de nuevo!");
+            }
         }
 
         System.out.print("Introduce el Titulo del evento: ");
@@ -160,13 +161,34 @@ public class HappinessAndCo {
         String descripcion = sc.nextLine();
 
         eventos.put(contadorEventos, new Evento(String.valueOf(contadorEventos), fecha, titulo, ubicacion, descripcion));
-        System.out.println("Evento creado correctamente");
+        System.out.println("Evento creado correctamente!");
     }
 
     private static void eliminarEvento() {
         System.out.println("\n*********************");
         System.out.println("|    Eliminar evento    |");
         System.out.println("*********************");
+
+        eventos.values().forEach(System.out::println); //Imprime los eventos
+        System.out.print("Introduce el título del evento: ");
+        String titulo = sc.nextLine();
+        Integer idAEliminar = null;
+
+        // Buscar el evento por título
+        for (Map.Entry<Integer, Evento> entry : eventos.entrySet()) {
+            if (entry.getValue().getTitulo().equalsIgnoreCase(titulo)) {
+                idAEliminar = entry.getKey();
+                break;
+            }
+        }
+
+        // Si no existe
+        if (idAEliminar == null) {
+            System.out.println("El evento no existe");
+        } else {
+            eventos.remove(idAEliminar);
+            System.out.println("Evento eliminado correctamente");
+        }
 
     }
 
