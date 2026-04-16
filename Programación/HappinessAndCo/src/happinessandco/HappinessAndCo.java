@@ -1,5 +1,13 @@
 package happinessandco;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -11,9 +19,18 @@ public class HappinessAndCo {
     /**
      * @param args the command line arguments
      */
+    static Scanner sc = new Scanner(System.in);
+    static HashMap<String, Usuario> usuarios = new HashMap<>();
+    static HashMap<Integer, Evento> eventos = new HashMap<>();
+    static ArrayList<Favorito> favoritos = new ArrayList<>();
+
+    static int contadorEventos = 0;
+    static int contadorGalerias = 0;
+
     public static void main(String[] args) {
+
         int opcion;
-        Scanner sc = new Scanner(System.in);
+
         do {
             System.out.println("\n*********************");
             System.out.println("|       MENÚ       |");
@@ -36,48 +53,146 @@ public class HappinessAndCo {
             }
             switch (opcion) {
                 case 1 -> {
-                    System.out.println("*Añadir usuario*");
+                    añadirUsuario();
                 }
                 case 2 -> {
-                    System.out.println("*Eliminar usuario*");
-                    System.out.println("¿Cuánto deseas depositar? ");
-                    double deposito = sc.nextDouble();
-                    if (deposito <= 0) { // No permite depósitos negativos
-                        System.out.println("El monto debe ser mayor que 0");
-                    } else {
-                        
-                    }
+                    eliminarUsuario();
                 }
 
                 case 3 -> {
-                    System.out.println("*Añadir evento*");
-                    
+                    anadirEvento();
                 }
                 case 4 -> {
-                    System.out.println("*Eliminar evento*");
+                    eliminarEvento();
                 }
                 case 5 -> {
-                    System.out.println("*Añadir galería*");
+                    anadirGaleria();
                 }
                 case 6 -> {
-                    System.out.println("*Eliminar galería*");
+                    eliminarGaleria();
                 }
                 case 7 -> {
-                    System.out.println("*Añadir favorito*");
+                    añadirFavorito();
                 }
                 case 8 -> {
-                    System.out.println("*Eliminar favorito*");
+                    eliminarFavorito();
                 }
                 case 9 -> {
                     System.out.println("*Gracias por usar nuestro sistema*");
                 }
-                
+
                 default ->
                     System.out.println("Opción inválida!");
 
             }
 
         } while (opcion != 9);
+    }
+
+    private static void añadirUsuario() {
+        System.out.println("\n*********************");
+        System.out.println("|    Añadir usuario    |");
+        System.out.println("*********************");
+
+        System.out.print("Introduce el email: ");
+        String email = sc.nextLine();
+
+        if (usuarios.containsKey(email)) {
+            System.out.println("El usuario ya existe!");
+            return;
+        }
+
+        System.out.print("Introduce el Nombre: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Introduce el Password: ");
+        String password = sc.nextLine();
+
+        usuarios.put(email, new Usuario(nombre, email, password));
+        System.out.println("Usuario creado correctamente");
+
+    }
+
+    private static void eliminarUsuario() {
+        System.out.println("\n*********************");
+        System.out.println("|    Eliminar usuario    |");
+        System.out.println("*********************");
+
+        System.out.print("Introduce el email: ");
+        String email = sc.nextLine();
+
+        if (usuarios.remove(email) == null) {
+            System.out.println("El usuario no existe!");
+        } else {
+            System.out.println("Usuario ha sido eliminado correctamente");
+        }
+
+    }
+
+    private static void anadirEvento() {
+        System.out.println("\n*********************");
+        System.out.println("|    Añadir evento    |");
+        System.out.println("*********************");
+        contadorEventos++;
+
+        // Definir el formato esperado
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.print("Introduce la Fecha *asegurate que sea en formato dd/MM/yyyy*: ");
+        // Fecha en formato String "16/01/2026"
+        String fechaTexto = sc.nextLine();
+        LocalDate fecha;
+
+        try {
+            // Convertir String a LocalDate
+            fecha = LocalDate.parse(fechaTexto, formato);
+            System.out.println("Fecha convertida: " + fecha);
+        } catch (DateTimeParseException e) {
+            System.out.println("Formato de fecha inválido: " + e.getMessage());
+        }
+
+        System.out.print("Introduce el Titulo del evento: ");
+        String titulo = sc.nextLine();
+
+        System.out.print("Introduce la Ubicación: ");
+        String ubicacion = sc.nextLine();
+
+        System.out.print("Indica una descripción: ");
+        String descripcion = sc.nextLine();
+
+        eventos.put(contadorEventos, new Evento(String.valueOf(contadorEventos), fecha, titulo, ubicacion, descripcion));
+        System.out.println("Evento creado correctamente");
+    }
+
+    private static void eliminarEvento() {
+        System.out.println("\n*********************");
+        System.out.println("|    Eliminar evento    |");
+        System.out.println("*********************");
+
+    }
+
+    private static void anadirGaleria() {
+        System.out.println("\n*********************");
+        System.out.println("|    Añadir galería    |");
+        System.out.println("*********************");
+    }
+
+    private static void eliminarGaleria() {
+        System.out.println("\n*********************");
+        System.out.println("|    Eliminar galería    |");
+        System.out.println("*********************");
+
+    }
+
+    private static void añadirFavorito() {
+        System.out.println("\n*********************");
+        System.out.println("|    Añadir favorito    |");
+        System.out.println("*********************");
+    }
+
+    private static void eliminarFavorito() {
+        System.out.println("\n*********************");
+        System.out.println("|    Eliminar favorito    |");
+        System.out.println("*********************");
     }
 
 }

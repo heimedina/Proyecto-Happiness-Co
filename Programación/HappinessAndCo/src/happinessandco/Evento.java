@@ -4,8 +4,8 @@
  */
 package happinessandco;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -14,19 +14,19 @@ import java.util.Date;
 public class Evento {
     
     private String id;
-    private Date fecha;
+    private LocalDate fecha;
     private String titulo;
     private String ubicacion;
     private String descripcion;
     private ArrayList<Galeria> coleccionGaleria;
 
-    public Evento(String id, Date fecha, String titulo, String ubicacion, String descripcion, ArrayList<Galeria> coleccionGaleria) {
+    public Evento(String id, LocalDate fecha, String titulo, String ubicacion, String descripcion) {
         this.id = id;
         this.fecha = fecha;
         this.titulo = titulo;
         this.ubicacion = ubicacion;
         this.descripcion = descripcion;
-        this.coleccionGaleria = coleccionGaleria;
+        this.coleccionGaleria = new ArrayList<>();
     }
 
     public String getId() {
@@ -37,11 +37,11 @@ public class Evento {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

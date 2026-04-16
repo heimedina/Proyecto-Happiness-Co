@@ -8,7 +8,7 @@ package happinessandco;
  *
  * @author heidi
  */
-public class Favoritos {
+public class Favorito {
     
     private String correoUsuario;
     private String idEvento;

@@ -28,14 +28,22 @@ class Galeria {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public String getIdEvento() {
         return idEvento;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setIdEvento(String idEvento) {
+        this.idEvento = idEvento;
+    }
+    
     @Override
     public String toString() {
         return "Galeria{" + "id=" + id + ", titulo=" + titulo + ", idEvento=" + idEvento + '}';
