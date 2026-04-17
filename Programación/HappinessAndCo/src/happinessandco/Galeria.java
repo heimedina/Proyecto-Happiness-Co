@@ -46,7 +46,7 @@ class Galeria {
     
     @Override
     public String toString() {
-        return "Galeria{" + "id=" + id + ", titulo=" + titulo + ", idEvento=" + idEvento + '}';
+        return "Id:" + id + "\t Titulo:" + titulo + "\t idEvento:" + idEvento;
     }
     
     

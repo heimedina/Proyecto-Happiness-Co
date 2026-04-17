@@ -13,6 +13,11 @@ public class Favorito {
     private String correoUsuario;
     private String idEvento;
 
+    public Favorito(String correoUsuario, String idEvento) {
+        this.correoUsuario = correoUsuario;
+        this.idEvento = idEvento;
+    }
+
     public String getCorreoUsuario() {
         return correoUsuario;
     }
@@ -23,7 +28,7 @@ public class Favorito {
 
     @Override
     public String toString() {
-        return "Favoritos{" + "correoUsuario=" + correoUsuario + ", idEvento=" + idEvento + '}';
+        return "Correo de Usuario:" + correoUsuario + "\t idEvento=" + idEvento;
     }
     
     

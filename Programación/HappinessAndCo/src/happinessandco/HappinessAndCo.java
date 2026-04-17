@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -31,7 +30,7 @@ public class HappinessAndCo {
 
         do {
             System.out.println("\n*********************");
-            System.out.println("|       MENÚ       |");
+            System.out.println("|       MENÚ        |");
             System.out.println("*********************");
             System.out.println("1. Añadir usuario");
             System.out.println("2. Eliminar usuario");
@@ -44,6 +43,7 @@ public class HappinessAndCo {
             System.out.println("9. Salir");
             System.out.print("\n Elige una opción: ");
             opcion = sc.nextInt();
+            sc.nextLine(); //Limpia el buffer 
 
             if (opcion < 1 || opcion > 9) {
                 System.out.println("Opción inválida!\n");
@@ -88,15 +88,15 @@ public class HappinessAndCo {
     }
 
     private static void añadirUsuario() {
-        System.out.println("\n*********************");
+        System.out.println("\n************************");
         System.out.println("|    Añadir usuario    |");
-        System.out.println("*********************");
+        System.out.println("************************");
 
         System.out.print("Introduce el email: ");
         String email = sc.nextLine();
 
         if (usuarios.containsKey(email)) {
-            System.out.println("El usuario ya existe!");
+            System.out.println("¡El usuario ya existe!");
             return;
         }
 
@@ -107,30 +107,30 @@ public class HappinessAndCo {
         String password = sc.nextLine();
 
         usuarios.put(email, new Usuario(nombre, email, password));
-        System.out.println("Usuario creado correctamente");
+        System.out.println("¡Usuario creado correctamente!");
 
     }
 
     private static void eliminarUsuario() {
-        System.out.println("\n*********************");
+        System.out.println("\n*************************");
         System.out.println("|    Eliminar usuario    |");
-        System.out.println("*********************");
+        System.out.println("*************************");
 
-        System.out.print("Introduce el email: ");
+        System.out.print("Introduce el email del usuario que deseas eliminar: ");
         String email = sc.nextLine();
 
         if (usuarios.remove(email) == null) {
-            System.out.println("El usuario no existe!");
+            System.out.println("¡El usuario no existe!");
         } else {
-            System.out.println("Usuario ha sido eliminado correctamente");
+            System.out.println("¡Usuario eliminado correctamente!");
         }
 
     }
 
     private static void anadirEvento() {
-        System.out.println("\n*********************");
+        System.out.println("\n***********************");
         System.out.println("|    Añadir evento    |");
-        System.out.println("*********************");
+        System.out.println("***********************");
         contadorEventos++;
 
         // Definir el formato esperado
@@ -138,14 +138,13 @@ public class HappinessAndCo {
         LocalDate fecha = null;
 
         while (fecha == null) {
-            System.out.print("Introduce la Fecha *asegurate que sea en formato dd/MM/yyyy*: ");
+            System.out.print("Introduce la Fecha del evento \n*asegurate que sea en formato dd/MM/yyyy*: ");
             // Fecha en formato String "16/01/2026"
             String fechaTexto = sc.nextLine();
 
             try {
                 // Convertir String a LocalDate
                 fecha = LocalDate.parse(fechaTexto, formato);
-                System.out.println("Fecha convertida: " + fecha);
             } catch (DateTimeParseException e) {
                 System.out.println("Formato de fecha inválido, intenta de nuevo!");
             }
@@ -161,60 +160,169 @@ public class HappinessAndCo {
         String descripcion = sc.nextLine();
 
         eventos.put(contadorEventos, new Evento(String.valueOf(contadorEventos), fecha, titulo, ubicacion, descripcion));
-        System.out.println("Evento creado correctamente!");
+        System.out.println("¡Evento creado correctamente!");
     }
 
     private static void eliminarEvento() {
-        System.out.println("\n*********************");
+        System.out.println("\n************************");
         System.out.println("|    Eliminar evento    |");
-        System.out.println("*********************");
+        System.out.println("************************");
 
-        eventos.values().forEach(System.out::println); //Imprime los eventos
-        System.out.print("Introduce el título del evento: ");
-        String titulo = sc.nextLine();
-        Integer idAEliminar = null;
-
-        // Buscar el evento por título
-        for (Map.Entry<Integer, Evento> entry : eventos.entrySet()) {
-            if (entry.getValue().getTitulo().equalsIgnoreCase(titulo)) {
-                idAEliminar = entry.getKey();
-                break;
-            }
+        //Mostrar eventos
+        if (eventos.isEmpty()) {
+            System.out.println("¡No hay eventos disponibles!");
+            return;
         }
+        eventos.values().forEach(System.out::println); //Imprime los eventos
+        System.out.print("Introduce el ID del evento que deseas eliminar: ");
+        int id = sc.nextInt();
 
-        // Si no existe
-        if (idAEliminar == null) {
-            System.out.println("El evento no existe");
+        if (eventos.remove(id) == null) {
+            System.out.println("¡El evento no existe!");
         } else {
-            eventos.remove(idAEliminar);
-            System.out.println("Evento eliminado correctamente");
+            System.out.println("¡Evento eliminado correctamente!");
         }
 
     }
 
     private static void anadirGaleria() {
-        System.out.println("\n*********************");
+        System.out.println("\n************************");
         System.out.println("|    Añadir galería    |");
-        System.out.println("*********************");
+        System.out.println("************************");
+
+        eventos.values().forEach(System.out::println);
+
+        System.out.print("Introduce el Id del evento: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        Evento e = eventos.get(id);
+
+        if (e == null) {
+            System.out.println("¡Error, El evento no existe");
+            return;
+        }
+
+        contadorGalerias++;
+
+        System.out.print("Introduce el titulo de la galeria: ");
+        String titulo = sc.nextLine();
+
+        e.getColeccionGaleria().add(new Galeria(String.valueOf(contadorGalerias), titulo, String.valueOf(id)));
+        System.out.println("¡Galeria creada correctamente!");
     }
 
     private static void eliminarGaleria() {
-        System.out.println("\n*********************");
+        System.out.println("\n**************************");
         System.out.println("|    Eliminar galería    |");
-        System.out.println("*********************");
+        System.out.println("**************************");
+
+        //Mostrar eventos
+        if (eventos.isEmpty()) {
+            System.out.println("¡No hay eventos disponibles!");
+            return;
+        }
+        System.out.println("\nLista de eventos:");
+        eventos.values().forEach(System.out::println);
+
+        System.out.print("Introduce el Id del evento: ");
+        int idEvento = sc.nextInt();
+        sc.nextLine();
+
+        Evento evento = eventos.get(idEvento);
+
+        if (evento == null) {
+            System.out.println("El evento no existe");
+            return;
+        }
+
+        if (evento.getColeccionGaleria().isEmpty()) {
+            System.out.println("¡Este evento no tiene galerías!");
+        }
+
+        System.out.println("\nGalerías del evento:");
+        evento.getColeccionGaleria().forEach(System.out::println);
+
+        System.out.print("Introduce el Id de la galería a eliminar: ");
+        int idGaleria = sc.nextInt();
+        sc.nextLine();
+
+        //Buscar y eliminar
+        boolean eliminada = evento.getColeccionGaleria().removeIf(g -> g.getId().equals(String.valueOf(idGaleria)));
+
+        if (!eliminada) {
+            System.out.println("¡La galería no existe!");
+        } else {
+            System.out.println("¡Galería eliminada correctamente!");
+        }
 
     }
 
     private static void añadirFavorito() {
-        System.out.println("\n*********************");
+        System.out.println("\n*************************");
         System.out.println("|    Añadir favorito    |");
-        System.out.println("*********************");
+        System.out.println("*************************");
+
+        //Mostrar eventos y usuarios
+        if (eventos.isEmpty()) {
+            System.out.println("¡No hay eventos disponibles!");
+            return;
+        } else if (usuarios.isEmpty()) {
+            System.out.println("¡No hay usuarios registrados!");
+            return;
+        }
+
+        System.out.println("\nLista de eventos:");
+        eventos.values().forEach(System.out::println);
+        System.out.println("\nLista de usuarios:");
+        usuarios.values().forEach(System.out::println);
+
+        System.out.print("\nIntroduce el Id del evento: ");
+        int idEvento = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Email usuario: ");
+        String email = sc.nextLine();
+
+        if (!eventos.containsKey(idEvento) || !usuarios.containsKey(email)) {
+            System.out.println("¡Error en los datos!");
+            return;
+        }
+
+        favoritos.add(new Favorito(email, String.valueOf(idEvento)));
+        System.out.println("Favorito creado correctamente");
     }
 
     private static void eliminarFavorito() {
-        System.out.println("\n*********************");
+        System.out.println("\n***************************");
         System.out.println("|    Eliminar favorito    |");
-        System.out.println("*********************");
+        System.out.println("***************************");
+
+        //Mostrar favoritos
+        if (favoritos.isEmpty()) {
+            System.out.println("¡No hay favoritos disponibles!");
+            return;
+        }
+
+        System.out.println("\nLista de favoritos:");
+        favoritos.forEach(System.out::println);
+
+        System.out.print("Introduce el Id del evento: ");
+        int idEvento = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Introduce el correo del usuario: ");
+        String email = sc.nextLine();
+
+        boolean eliminado = favoritos.removeIf((var f)
+                -> f.getIdEvento().equals(String.valueOf(idEvento)) && f.getCorreoUsuario().equals(email)
+        );
+
+        if (!eliminado) {
+            System.out.println("¡El favorito no existe!");
+        } else {
+            System.out.println("¡Favorito eliminado correctamente!");
+        }
     }
 
 }
