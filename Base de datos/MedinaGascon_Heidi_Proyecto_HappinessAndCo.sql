@@ -65,11 +65,11 @@ CREATE TABLE favoritos (
     on update cascade
 );
 
---Insertamos eventos (tres pro ximos y tres del historial, considerando la fecha actual como 28-02-2026)
+--Insertamos eventos (tres proximos y tres del historial, considerando la fecha actual como 28-02-2026)
 INSERT INTO eventos (fecha, titulo, ubicacion, descripcion) VALUES
 ('2026-01-01', 'Concierto Año Nuevo', 'Madrid', 'Gran concierto de apertura de año'),
 ('2026-01-12', 'Obra de Teatro Clásica', 'Zaragoza', 'Representación teatral clásica'),
-('2026-01-24', 'Exposición Arte Moderno', 'Gijón', 'Exposición internacional'),
+('2026-01-24', 'Exposición Arte Moderno', 'Gijón', 'Arte moderno internacional'),
 ('2026-06-05', 'Festival Indie', 'Madrid', 'Festival de música indie'),
 ('2026-06-15', 'Cine al aire libre', 'Oviedo', 'Proyección nocturna'),
 ('2026-06-25', 'Exposición Fotográfica', 'Gijón', 'Fotografía contemporánea');

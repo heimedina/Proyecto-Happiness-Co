@@ -1,0 +1,11 @@
+.navegation {
+    padding: 0.5rem;
+    transition: all 0.3s;
+}
+
+.navegation:hover {
+    color: #009bdb;
+    background-color: white;
+}
+
+
