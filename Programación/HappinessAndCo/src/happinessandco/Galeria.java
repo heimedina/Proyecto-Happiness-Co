@@ -9,7 +9,7 @@ package happinessandco;
  * @author heidi
  */
 class Galeria {
-    
+
     private String id;
     private String titulo;
     private String idEvento;
@@ -43,11 +43,10 @@ class Galeria {
     public void setIdEvento(String idEvento) {
         this.idEvento = idEvento;
     }
-    
+
     @Override
     public String toString() {
         return "Id:" + id + "\t Titulo:" + titulo + "\t idEvento:" + idEvento;
     }
-    
-    
+
 }

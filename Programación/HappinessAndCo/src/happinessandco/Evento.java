@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author heidi
  */
 public class Evento {
-    
+
     private String id;
     private LocalDate fecha;
     private String titulo;
@@ -82,7 +82,4 @@ public class Evento {
         return "id:" + id + "\t Fecha:" + fecha + "\t Titulo=" + titulo + "\t Ubicacion=" + ubicacion + "\t Descripcion:" + descripcion;
     }
 
-    
-    
-    
 }

@@ -9,7 +9,7 @@ package happinessandco;
  * @author heidi
  */
 public class Favorito {
-    
+
     private String correoUsuario;
     private String idEvento;
 
@@ -30,6 +30,5 @@ public class Favorito {
     public String toString() {
         return "Correo de Usuario:" + correoUsuario + "\t idEvento=" + idEvento;
     }
-    
-    
+
 }
