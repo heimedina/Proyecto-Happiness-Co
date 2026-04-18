@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Eventos de Happines And Co</title>
+    <link>https://www.happinessandco.es/rss</link>
+    <description>Canal sobre eventos de happiness and co</description>
+    <item>
+      <title>Concierto Año Nuevo</title>
+      <link>https://www.happinessandco.es/rss/concierto_ano_nuevo.html</link>
+      <description>Gran concierto de apertura de año</description>
+      <author>Heidi Medina</author>
+    </item>
+    <item>
+      <title>Obra de Teatro Clásica</title>
+      <link>https://www.happinessandco.es/rss/obra_teatro_clasica.html</link>
+      <description>Representación teatral clásica</description>
+      <author>Heidi Medina</author>
+    </item>
+    <item>
+      <title>Exposición Arte Moderno</title>
+      <link>https://www.happinessandco.es/rss/exposicion_arte_moderno.html</link>
+      <description>Arte moderno internacional</description>
+      <author>Heidi Medina</author>
+    </item>
+    <item>
+      <title>Festival Indie</title>
+      <link>https://www.happinessandco.es/rss/festival_indie.html</link>
+      <description>Festival de música indie</description>
+      <author>Heidi Medina</author>
+    </item>
+    <item>
+      <title>Cine al aire libre</title>
+      <link>https://www.happinessandco.es/rss/cine_aire_libre.html</link>
+      <description>Proyección nocturna</description>
+      <author>Heidi Medina</author>
+    </item>
+    <item>
+      <title>Exposición Fotográfica</title>
+      <link>https://www.happinessandco.es/rss/exposicion_fotografica.html</link>
+      <description>Fotografía contemporánea</description>
+      <author>Heidi Medina</author>
+    </item>
+  </channel>
+</rss>
